@@ -1,0 +1,1 @@
+uno = imread('1.png');
