@@ -11,7 +11,7 @@ function out = mapFeature(X1, X2)
 %
 % While the feature mapping allows us to build a more expressive classifier,
 % it also more susceptible to overfitting
-grado = 2;
+grado = 6;
 out = ones(size(X1(:,1)));
 for i = 1:grado
     for j = 0:i
