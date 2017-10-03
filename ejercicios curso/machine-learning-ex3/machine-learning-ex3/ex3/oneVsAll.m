@@ -21,9 +21,7 @@ X = [ones(m, 1) X];
 % Instructions: You should complete the following code to train num_labels
 %               logistic regression classifiers with regularization
 %               parameter lambda. 
-%
-% Hint: theta(:) will return a column vector.
-%
+
 % Hint: You can use y == c to obtain a vector of 1's and 0's that tell you
 %       whether the ground truth is true/false for this class.
 %
@@ -33,21 +31,20 @@ X = [ones(m, 1) X];
 %
 %       fmincg works similarly to fminunc, but is more efficient when we
 %       are dealing with large number of parameters.
+%       pero es menos precisa
 %
-% Example Code for fmincg:
-%
-%     % Set Initial theta
-%     initial_theta = zeros(n + 1, 1);
-%     
-%     % Set options for fminunc
-%     options = optimset('GradObj', 'on', 'MaxIter', 50);
-% 
-%     % Run fmincg to obtain the optimal theta
-%     % This function will return theta and the cost 
-%     [theta] = ...
-%         fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), ...
-%                 initial_theta, options);
-%
+
+initial_theta = zeros(n + 1, 1);
+options = optimset('GradObj', 'on', 'MaxIter', 50);
+
+% para c de 1 a 10
+for c = 1:num_labels
+% theta(:) will return a column vector.
+%   endva guardadndo en cada fila el vector columna
+% fmincg minimiza la funcion costos, y me devuelve ls thetas
+  all_theta(c,:) = fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), initial_theta, options);
+
+
 
 
 

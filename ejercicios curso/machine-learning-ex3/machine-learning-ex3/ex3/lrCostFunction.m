@@ -36,7 +36,29 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+hipotesis = sigmoid(X * theta);
 
+diferencias = y .* log(hipotesis) + ((1-y) .* log( 1 - hipotesis));
+acumulado = sum(diferencias); 
+
+% costo sin regularizar
+J = acumulado / (-m);
+% fprintf('J es %f',J); 
+
+grad = (1 / m) * (X' * (hipotesis - y));
+% es lo mismo grad = 1/m .* (sum((hipotesis - y) .* X)');
+
+% quito theta(0) porque theta(0) no se debe regularizar
+thetaSin0= [0 ; theta(2:size(theta), :)];
+
+% elevo cada theta al cuadrado
+suma = sum(thetaSin0.^2);
+
+% funcion costo regularizada
+J = J + ((lambda*suma) / (2*m));
+
+% gradiente regularizado
+grad = grad + (lambda/m).*thetaSin0;
 
 
 
