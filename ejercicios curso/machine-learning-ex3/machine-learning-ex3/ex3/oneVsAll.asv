@@ -10,18 +10,16 @@ function [all_theta] = oneVsAll(X, y, num_labels, lambda)
 % m guarda numero de filas n guarda numero de columnas
 [m,n] = size(X);
 
-% 10x401 
+% You need to return the following variables correctly 
 all_theta = zeros(num_labels, n + 1);
 
 % Add ones to the X data matrix
 X = [ones(m, 1) X];
 
-% largo de filas igual a cantidad de variables + 1. queda:  401x1
 initial_theta = zeros(n + 1, 1);
 
 % options = optimset('param1',value1,'param2',value2,...)
 % parametro gradobj prendido, max iter 50
-% optimset es una estructura de opciones
 options = optimset('GradObj', 'on', 'MaxIter', 50);
 
 % para c de 1 a 10

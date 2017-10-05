@@ -108,12 +108,10 @@ pause;
 % predice con el theta encontrado y guarda los resultados
 pred = predictOneVsAll(all_theta, X);
 
-% valor = imread('1.bmp');
-% valor = valor(:);
-% imshow(valor);
-% pred2= predictOneVsAll(all_theta, valor);
+valor = imread('1.bmp');
+valor = [ones(400m10valor(:);
+ pred2= predictOneVsAll(all_theta, valor);
 % fprintf('%d',valor);
-
 % calcula el porcentaje total de aciertos
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
 
